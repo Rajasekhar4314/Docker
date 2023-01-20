@@ -1,3 +1,37 @@
 ## Create Virtual Environment
 
 conda create -p ven_name python=3.7 -y
+## Activate environment
+conda activate venv_name/
+
+""" 
+If there is NO requirements.txt then we will install like this
+pip install flask
+pip install pandas
+pip install sklearn
+"""
+
+## Create requirements.txt as a  name
+flask
+numpy
+sklearn
+pip install -r requirements.txt
+
+## Create a docker file
+touch Dockerfile --- FileName
+
+FROM python:3-alpine
+WORKDIR /service
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . ./
+EXPOSE 8082
+ENTRYPOINT ["python3", "app.py"]
+
+## To Ignore Venv we will create .dockerignore file
+touch .dockerignore  --- File Name
+## type
+venv    --- venv_name
+
+## To Build doker image
+docker build -t docker1 .
